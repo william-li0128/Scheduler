@@ -150,20 +150,20 @@ storiesOf("Appointment", module)
   .add("Appointment", () => <Appointment />)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header", () => <Header time="12pm" />)
-  .add("Empty", () => <Empty onAdd={() => action("onAdd")()}/>)
+  .add("Empty", () => <Empty onAdd={action("onAdd")}/>)
   .add("Show", () => (
     <Show
       student="Lydia Miller-Jones"
       interviewer={interviewers}
-      onEdit={() => action("onEdit")()}
-      onDelete={() => action("onDelete")()}
+      onEdit={action("onEdit")}
+      onDelete={action("onDelete")}
     />
   ))
   .add("Confirm", () => (
     <Confirm
       message="Delete the appointment?"
-      onCancel={() => action("onCancel")()}
-      onConfirm={() => action("onConfirm")()}
+      onCancel={action("onCancel")}
+      onConfirm={action("onConfirm")}
     />
   ))
   .add("Status", () => (
@@ -174,7 +174,7 @@ storiesOf("Appointment", module)
   .add("Error", () => (
     <Error
       message="Could not delete appointment."
-      onClose={() => action("onClose")()}
+      onClose={action("onClose")}
     />
   ))
   .add("Edit", () => (
@@ -182,14 +182,14 @@ storiesOf("Appointment", module)
       student="William"
       interviewer={2}
       interviewers={interviewers}
-      onSave={() => action("onSave")()}
-      onCancel={() => action("onCancel")()}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
     />
   ))
   .add("Create", () => (
     <Form
       interviewers={interviewers}
-      onSave={() => action("onSave")()}
-      onCancel={() => action("onCancel")()}
+      onSave={action("onSave")}
+      onCancel={action("onCancel")}
     />
   ))
