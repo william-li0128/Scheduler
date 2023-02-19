@@ -4,53 +4,23 @@ import axios from "axios";
 import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "./Appointment";
-
-
-const appointments = {
-  "1": {
-    id: 1,
-    time: "12pm",
-  },
-  "2": {
-    id: 2,
-    time: "1pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer:{
-        id: 3,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  },
-  "3": {
-    id: 3,
-    time: "2pm",
-  },
-  "4": {
-    id: 4,
-    time: "3pm",
-    interview: {
-      student: "Archie Andrews",
-      interviewer:{
-        id: 4,
-        name: "Cohana Roy",
-        avatar: "https://i.imgur.com/FK8V841.jpg",
-      }
-    }
-  },
-  "5": {
-    id: 5,
-    time: "4pm",
-  }
-};
+import getAppointmentsForDay from "helpers/selectors";
 
 export default function Application(props) {
 
-  const [days, setDays] = useState([]);
-  const [day, setDay] = useState("Monday");
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    appointments: {}
+  });
 
-  const listAppointments = Object.values(appointments).map((appointment) => 
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+
+  // create a function called setDay that updates the state with the new day.
+  const setDay = day => setState({ ...state, day });
+
+  const listAppointments = dailyAppointments.map(appointment =>
     appointment.interview ? 
       <Appointment 
         key={appointment.id}
@@ -63,23 +33,13 @@ export default function Application(props) {
       />
   )
 
-  function getDays(){
-    axios.get("/api/days",
-      {
-        proxy: {
-            protocol: 'http',
-            host: 'localhost',
-            port: 8001
-        }
-      }
-    ).then(response=>{
-      setDays([...response.data]);
-      console.log(response.data);
-    })
-  } 
-
-  useEffect(()=>{
-    getDays();
+  useEffect(() => {
+    Promise.all([
+      axios.get('/api/days'),
+      axios.get('/api/appointments')
+    ]).then((all) => {
+      setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data }));
+    });
   }, []);
 
   return (
@@ -93,8 +53,8 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
           <DayList 
-            days={days} 
-            value={day} 
+            days={state.days} 
+            value={state.day} 
             onChange={setDay} 
           />
         </nav>
