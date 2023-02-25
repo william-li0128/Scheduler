@@ -52,7 +52,6 @@ export default function useApplicationData() {
         days : updatedDays
       })
     )
-    .then (console.log(state.days))
   }
 
   function cancelInterview(id) {
