@@ -58,7 +58,7 @@ npm run storybook
 *When a user wants to delete an appointment, there will be a confirmation popup*
 
 
-## API server/*Database Setup
+## API server & Database Setup
 
 For full functionality both must run concurrently: the client and the API server applications.
 - Start by forking and cloning the scheduler-api server [here](https://github.com/lighthouse-labs/scheduler-api)
