@@ -38,23 +38,23 @@ npm test
 npm run storybook
 ```
 ### Daily view
-!['booked-slots-available']()
+!['booked-slots-available'](https://github.com/william-li0128/Scheduler/blob/master/docs/appointment_page.png?raw=true)
 *By selecting a weekday , a user can see booked appointments and available slots for each day.*
 
 ### Book an Appointment
-!['book-an-appointment']()
+!['book-an-appointment'](https://github.com/william-li0128/Scheduler/blob/master/docs/new_appointment.png?raw=true)
 *A user can choose any empty slot to book an appointment*
 
 ### No slot available for a specific day
-!['after-booking']()
+!['after-booking'](https://github.com/william-li0128/Scheduler/blob/master/docs/new_appointment-saved.png?raw=true)
 *Booked appoinments would get displayed in the homepage after saving*
 
 ### No slot left for a specific day
-!['no-slot-left']()
+!['no-slot-left'](https://github.com/william-li0128/Scheduler/blob/master/docs/no_slot_left.png?raw=true)
 *Nav bar rendered to grey when no slot left for that day*
 
 ### Deleting an appointment
-!['delete-an-appointment']()
+!['delete-an-appointment'](https://github.com/william-li0128/Scheduler/blob/master/docs/delete_appointment.png?raw=true)
 *When a user wants to delete an appointment, there will be a confirmation popup*
 
 
