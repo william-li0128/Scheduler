@@ -10,10 +10,12 @@ describe("Appointments", () => {
   });
 
   it("should book an interview", () => {
+    // locate available interview spots
     cy.get("[alt=Add]")
       .first()
       .click();
     
+    // type in must-have contents
     cy.get("[data-testid=student-name-input]")
       .type("Lydia Miller-Jones");
 
@@ -23,6 +25,7 @@ describe("Appointments", () => {
     cy.contains("Save")
       .click();
 
+    // show correct student and interviewer name
     cy.contains(".appointment__card--show", "Lydia Miller-Jones");
     cy.contains(".appointment__card--show", "Sylvia Palmer");
   });
@@ -42,6 +45,7 @@ describe("Appointments", () => {
     cy.contains("Save")
       .click();
 
+    // render with updated data
     cy.contains(".appointment__card--show", "Lydia Miller-Jones");
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });

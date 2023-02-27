@@ -62,15 +62,20 @@ export default function useApplicationData() {
         spots: state.days[dayOfWeek]
       }
   
-      if (!state.appointments[id].interview) {
+      if (!state.appointments[id].interview) { 
+        // which means to create a new appointment
         day = {
           ...state.days[dayOfWeek],
           spots: state.days[dayOfWeek].spots - 1
+          /* since a new spot has been booked,
+          takes down one available spot.    */
         } 
-      } else {
+      } else { // which to edit an existing appointment
         day = {
           ...state.days[dayOfWeek],
           spots: state.days[dayOfWeek].spots
+          /* since the spot has been already booked,
+          available spots won't change.          */
         } 
       }
   
@@ -101,12 +106,15 @@ export default function useApplicationData() {
     const day = {
       ...state.days[dayOfWeek],
       spots: state.days[dayOfWeek].spots + 1
-    }
+      /* since an existing spot has been deleted,
+      increases available spots by 1.          */
+    }          
+
 
     let days = state.days
     days[dayOfWeek] = day;
 
-    const url =`http://localhost:8001/api/appointments/${id}`;
+    const url =`/api/appointments/${id}`;
   
     return axios.delete(url, appointment).then(()=>{
       setState({...state, appointments, days });

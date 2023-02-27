@@ -1,3 +1,4 @@
+// fake data here
 const fixtures = {
   days: [
     {
@@ -54,6 +55,7 @@ const fixtures = {
 };
 
 export default {
+  // mock GET request to API server
   get: jest.fn(url => {
     if (url === "/api/days") {
       return Promise.resolve({
@@ -81,12 +83,18 @@ export default {
       });
     }
   }),
+
+  /* mock PUT request to API server,
+  but actually would change nothing */
   put: jest.fn(url => {
     return Promise.resolve({
       status: 204,
       statusText: "No Content"
     })
   }),
+
+  /* mock delete request to API server,
+  but actually would change nothing  */
   delete: jest.fn(url => {
     return Promise.resolve({
       status: 204,

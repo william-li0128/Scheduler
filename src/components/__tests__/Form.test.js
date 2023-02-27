@@ -13,7 +13,7 @@ describe("Form", () => {
       student: "Sylvia Palmer",
       avatar: "https://i.imgur.com/LpaY82x.png"
     }
-  ];
+  ]; // fake data here
 
   it("renders without student name if not provided", () => {
     const { getByPlaceholderText } = render(<Form interviewers= {interviewers}/>)
