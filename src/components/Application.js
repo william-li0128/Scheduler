@@ -54,8 +54,8 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointments}
-        <Appointment key="last" time="5pm" /> {/* ignore the last appointment */}
+        <Appointment key="last" time="5pm" /> 
       </section>
     </main>
-  );
+  );// ignore the last appointment
 }
